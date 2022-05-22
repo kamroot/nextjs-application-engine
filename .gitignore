@@ -1,0 +1,34 @@
+## Next folders
+.next/
+/out_publish/
+/out_functions/
+.vercel/
+.env.local
+
+## Tests
+coverage/
+
+## Node Folders
+node_modules/
+
+## Content
+# Drafts
+_content/**/*-draft/
+# Generated Files
+pages/_data/**/data.json
+public/img/social/*
+public/sw.js
+public/workbox-*.js
+public/img/posts/20*
+public/robots.txt
+public/sitemap*.xml
+
+## Others
+.env*
+
+.DS_Store
+.swp
+
+facade
+public
+

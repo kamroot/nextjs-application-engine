@@ -1,0 +1,15 @@
+*.html
+*.json
+*.css
+*.png
+*.svg
+*.jpeg
+*.jpg
+*.xib
+*.eot
+*.ttf
+*.woff
+*.woff2
+*.md
+*.svg
+src/scripts

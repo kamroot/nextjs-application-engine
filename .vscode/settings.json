@@ -1,0 +1,24 @@
+{
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "grammarly.overrides": [
+    {
+      "config": {
+        "audience": "knowledgeable",
+        "dialect": "british",
+        "domain": "technical",
+        "emotions": ["friendly", "analytical"],
+        "goals": ["inform"]
+      }
+    }
+  ],
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 70,
+  "prettier.tabWidth": 2,
+  "[javascript]": {  
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
+}
