@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: website
+    volumes:
+      - '${DATA}:/data'
+    command: npm run start
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    restart: on-failure
+    environment:
+      NEXT_PUBLIC_SITE_URL: '${NEXT_PUBLIC_SITE_URL}'
+      DATABASE_URL: '${DATABASE_URL}'
+      NEXT_PUBLIC_LOG_LEVEL: '${NEXT_PUBLIC_LOG_LEVEL}'
+      MJ_API_PUBLIC: '${MJ_API_PUBLIC}'
+      MJ_API_PRIVATE: '${MJ_API_PRIVATE}'
+      FORM_EMAIL_SENDER: '${FORM_EMAIL_SENDER}'
+      FORM_EMAIL_NAME: '${FORM_EMAIL_NAME}'
+      FORM_STORAGE_LOCATION: '${FORM_STORAGE_LOCATION}'
+      FORM_EMAIL_TEXTPART: '${FORM_EMAIL_TEXTPART}'
+      SLACK_TEST_URL: '${SLACK_TEST_URL}'
+      SLACK_PROD_URL: '${SLACK_PROD_URL}'
