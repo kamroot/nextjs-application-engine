@@ -10,7 +10,6 @@ module.exports = {
   content: [
     // Example content paths...
     './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx}',
     './facade/**/*.{js,jsx,ts,tsx}',
     './pages/**/*.{js,jsx,ts,tsx}',
     './lib/**/*.{js,jsx,ts,tsx}',

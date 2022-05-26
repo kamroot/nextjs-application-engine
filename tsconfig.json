@@ -25,9 +25,6 @@
       "~/facade/*": [
         "facade/*"
       ],
-      "~/data/*": [
-        "_data/*"
-      ]
     },
     "incremental": true
   },
@@ -38,7 +35,8 @@
   ],
   "exclude": [
     "node_modules",
-    "node_modules/esbuild/lib/main.d.ts"
+    "node_modules/esbuild/lib/main.d.ts",
+    "scripts/fast-glob-test.ts"
   ],
   "ts-node": {
     // these options are overrides used only by ts-node
