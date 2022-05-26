@@ -5,7 +5,7 @@ import { config } from '~/lib/functions/config';
 type ResponseData = string;
 
 const getVersion = async () => {
-  const { stdout } = await execa('_data/postbuild.sh');
+  const { stdout } = await execa('scripts/postbuild.sh');
   return stdout;
 };
 
