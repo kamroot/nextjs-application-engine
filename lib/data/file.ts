@@ -6,11 +6,12 @@ import { asyncMap } from '@arcath/utils/lib/functions/async-map';
 import { TOCEntry } from '~/lib/functions/toc';
 import { log } from '../functions/log';
 import { prepareMDX } from '../functions/prepare-mdx';
-import { config } from '~/lib/functions/config';
 
 const { readFile, readdir } = fs.promises;
 
 const fileCache: Record<string, File<any, any>> = {};
+
+const MODULE_NAME = 'file.ts';
 
 export interface BaseProperties {
   bundleDirectory: string;
@@ -192,8 +193,11 @@ export const getFiles = <Frontmatter, Properties extends BaseProperties>({
   defaultQueryParams: ContentQueryParams<Frontmatter, Properties>;
   getFilePath?: (dir: string) => string;
 }): ((query?: Partial<ContentQueryParams<Frontmatter, Properties>>) => Promise<File<Frontmatter, Properties>[]>) => {
-  return async (query) => {
-    const dirs = await readdir(directory);
+  if (!fs.existsSync(directory)) {
+    console.log(MODULE_NAME, `${directory} does not exist`);
+  }
+  const ret = async (query) => {
+    const dirs = fs.existsSync(directory) ? fs.readdirSync(directory) : [];
 
     const { limit, orderBy, order, skip } = defaults(query, defaultQueryParams);
 
@@ -220,7 +224,7 @@ export const getFiles = <Frontmatter, Properties extends BaseProperties>({
     if (limit !== false) {
       files = files.slice(skip, skip + limit);
     }
-
     return files;
   };
+  return ret;
 };
