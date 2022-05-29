@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import meta from 'facade/data/meta.json';
 import { getBlogList } from '~/lib/data/mdx';
 import { log } from '~/lib/functions/log';
-import { config } from '~/lib/functions/config';
 
 const MODULE_NAME = 'api-posts-all';
 
@@ -45,11 +44,9 @@ const allPostsHandler: NextApiHandler = async (req: NextApiRequest, res: NextApi
     }
   );
 
-  if (process.env.NODE_ENV === 'development') {
-    log(MODULE_NAME, `API: req:: cookies - ${JSON.stringify(req.cookies)}, page - ${currentPage}`);
-    log(MODULE_NAME, `API: res:: count ${blogs.length}, page ${currentPage}, limit - ${meta.api.pageLimit}`);
-    // blogs.map((b, i) => console.log(`${i} - ${b.title}`));
-  }
+  log(MODULE_NAME, `API: req:: cookies - ${JSON.stringify(req.cookies)}, page - ${currentPage}`);
+  log(MODULE_NAME, `API: res:: count ${blogs.length}, page ${currentPage}, limit - ${meta.api.pageLimit}`);
+  // blogs.map((b, i) => console.log(`${i} - ${b.title}`));
 
   res.status(200).json({
     date: Date.now(),

@@ -119,3 +119,7 @@ For each page make sure we send the following attributes to Next SEO
 - section
 - summary
 - time
+
+# Notes
+
+- All dates inside text (MDX or otherwise) should always be in yyy-mm-dd

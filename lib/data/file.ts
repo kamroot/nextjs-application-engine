@@ -213,7 +213,15 @@ export const getFiles = <Frontmatter, Properties extends BaseProperties>({
       return { index, value };
     });
 
-    const sorted = sortOnMap.sort((a, b) => a.value - b.value);
+    const sorted = sortOnMap.sort((a, b) => {
+      let retVal;
+      if (a.value === b.value) {
+        retVal = 0;
+      } else {
+        retVal = Date.parse(a.value) - Date.parse(b.value) > 0 ? 1 : -1;
+      }
+      return retVal;
+    });
 
     files = sorted.map(({ index }) => files[index]);
 
@@ -224,6 +232,15 @@ export const getFiles = <Frontmatter, Properties extends BaseProperties>({
     if (limit !== false) {
       files = files.slice(skip, skip + limit);
     }
+    // for (const f in files) {
+    //   console.log(
+    //     f,
+    //     // await files[f].getProperty('dateUpdated'),
+    //     await files[f].getProperty('dateUpdated'),
+    //     await files[f].getProperty('title'),
+    //     files[f].properties.slug
+    //   );
+    // }
     return files;
   };
   return ret;
